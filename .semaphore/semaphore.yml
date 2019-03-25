@@ -1,0 +1,18 @@
+version: v1.0
+name: job
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: "Build"
+    task:
+      env_vars:
+        - name: APP_ENV
+          value: prod
+      jobs:
+      - name: run
+        commands:
+          - checkout
+          - bash run.sh
